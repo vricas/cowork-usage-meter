@@ -1,0 +1,14 @@
+{
+  "name": "cowork-usage-meter",
+  "description": "The Cowork Usage Meter plugin: context size and plan-limit use, with budget warnings. Independent, not an Anthropic product.",
+  "owner": {
+    "name": "Andrew Kemp"
+  },
+  "plugins": [
+    {
+      "name": "cowork-usage-meter",
+      "source": "./",
+      "description": "Independent plugin, not an Anthropic product: shows context size and plan-limit use in the status line and warns at budgets you set."
+    }
+  ]
+}

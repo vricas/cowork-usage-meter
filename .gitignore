@@ -1,0 +1,6 @@
+# Written by the engine at each load; not part of the plugin.
+.claude-plugin/types/
+.mcpb-cache/
+.DS_Store
+*.log
+node_modules/

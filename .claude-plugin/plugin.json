@@ -1,0 +1,74 @@
+{
+  "name": "cowork-usage-meter",
+  "version": "0.1.0",
+  "description": "Independent plugin, not an Anthropic product: shows context size and plan-limit use in the status line and warns at budgets you set.",
+  "author": {
+    "name": "Andrew Kemp"
+  },
+  "homepage": "https://github.com/vricas/cowork-usage-meter",
+  "repository": "https://github.com/vricas/cowork-usage-meter",
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "conversationBudget": {
+      "type": "number",
+      "title": "Per-conversation budget (points of the weekly limit)",
+      "description": "Warns at 80% and 100% of this. Approximate: limits are account-wide, so parallel conversations count too. The Chat figure excludes a conversation's first turn and the first turn after a long idle gap. 0 turns budget warnings off. To hide the Chat figure too, turn off its status-line segment.",
+      "default": 2,
+      "min": 0,
+      "max": 100
+    },
+    "fiveHourThresholds": {
+      "type": "string",
+      "title": "Five-hour warning thresholds (%)",
+      "description": "Comma-separated percentages of the five-hour limit; each warns once per crossing.",
+      "default": "80, 95"
+    },
+    "contextThreshold": {
+      "type": "number",
+      "title": "Context-size threshold (tokens)",
+      "description": "Past this, suggests starting a fresh conversation with a handoff note.",
+      "default": 150000,
+      "min": 1000
+    },
+    "cacheLifetimeMinutes": {
+      "type": "number",
+      "title": "Cache lifetime (minutes)",
+      "description": "Idle time after which the next message is assumed to re-read the whole conversation at the full rate. Falls to 5 minutes while a plan window reads 100%.",
+      "default": 60,
+      "min": 1,
+      "max": 1440
+    },
+    "coldCacheMinTokens": {
+      "type": "number",
+      "title": "Cold-cache minimum size (tokens)",
+      "description": "Smaller conversations get no cold-cache warning.",
+      "default": 50000,
+      "min": 0
+    },
+    "showContext": {
+      "type": "boolean",
+      "title": "Status line: context segment",
+      "description": "Shows Ctx tokens and percentage of the window.",
+      "default": true
+    },
+    "showFiveHour": {
+      "type": "boolean",
+      "title": "Status line: five-hour segment",
+      "description": "Shows the five-hour limit's use.",
+      "default": true
+    },
+    "showWeekly": {
+      "type": "boolean",
+      "title": "Status line: weekly segment",
+      "description": "Shows the seven-day limit's use.",
+      "default": true
+    },
+    "showChat": {
+      "type": "boolean",
+      "title": "Status line: Chat segment",
+      "description": "Shows the points of the weekly limit this conversation has used (approximate; excludes the first turn and the first turn after a long idle gap).",
+      "default": true
+    }
+  }
+}
